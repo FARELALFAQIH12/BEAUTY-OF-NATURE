@@ -1,0 +1,1060 @@
+/* Reset and Base Styles - Android & iOS Responsive */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+}
+
+:root {
+    /* Vibrant Color Palette */
+    --primary-color: #ff6b35;
+    --primary-dark: #e85a24;
+    --secondary-color: #7b2cbf;
+    --secondary-light: #9d4edd;
+    --accent-color: #00f5d4;
+    --accent-pink: #fbff11;
+    --danger-color: #2600ff;
+    --success-color: #06d6a0;
+    --warning-color: #ffd60a;
+    
+    /* Background Colors */
+    --bg-gradient-1: #667eea;
+    --bg-gradient-2: #764ba2;
+    --bg-gradient-3: #f093fb;
+    --bg-gradient-4: #e9e50a;
+    
+    /* Text Colors */
+    --dark-color: #1a1a2e;
+    --gray-color: #4a4a6a;
+    --light-gray: #f8f9ff;
+    --white: #ffffff;
+    
+    /* Effects */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --glow: 0 0 20px rgba(255, 107, 53, 0.4);
+    --glow-cyan: 0 0 20px rgba(245, 241, 0, 0.5);
+    
+    /* iOS Safe Area */
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+html {
+    /* Prevent text size adjustment on orientation change */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #e9ff20 0%, #0144ff 50%, #f8fc0e 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    padding: 20px;
+    /* iOS safe area */
+    padding-left: max(20px, var(--safe-area-left));
+    padding-right: max(20px, var(--safe-area-right));
+    padding-bottom: max(20px, var(--safe-area-bottom));
+    color: var(--dark-color);
+    /* iOS smooth scrolling */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.header-kasir {
+    background: linear-gradient(135deg, #fffb04, #1e52fd, #56d7ee);
+    background-size: 200% 200%;
+    animation: gradientBG 8s ease infinite;
+    border-radius: 20px;
+    padding: 25px 35px;
+    padding-top: max(25px, calc(25px + var(--safe-area-top)));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg), var(--glow);
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 3px solid var(--accent-color);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    /* iOS minimum touch target */
+    min-height: 44px;
+    background: linear-gradient(135deg, #00f5d4, #00bbf9);
+    color: #1a1a2e;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.4);
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 245, 212, 0.6);
+}
+
+.back-btn:active {
+    transform: scale(0.98);
+}
+
+.header-kasir h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.datetime-display {
+    display: flex;
+    gap: 16px;
+}
+
+.date-box {
+    background: linear-gradient(135deg, #f8fc0b, #0602f0);
+    padding: 15px 25px;
+    border-radius: 15px;
+    color: var(--white);
+    text-align: center;
+    min-width: 140px;
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+    border: 2px solid var(--white);
+}
+
+.time-box {
+    background: linear-gradient(135deg, #fffb25, #00bbf9);
+    padding: 15px 25px;
+    border-radius: 15px;
+    color: #1a1a2e;
+    text-align: center;
+    min-width: 140px;
+    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.4);
+    border: 2px solid var(--white);
+}
+
+.date-box .label, .time-box .label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.date-box .value, .time-box .value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* Layout */
+.kasir-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 24px;
+    border: 3px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, #ff6b35, #7b2cbf, #00f5d4);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #e6ff05, #0252fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0c0cff;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    /* iOS minimum touch target */
+    min-height: 48px;
+    border: 3px solid #e0e0ff;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: linear-gradient(135deg, #f8f9ff, #fff5f5);
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2), var(--glow);
+    transform: translateY(-2px);
+}
+
+.form-group input[readonly] {
+    background: linear-gradient(135deg, #e8f4f8, #d4f1f9);
+    font-weight: 700;
+    color: #ff6b35;
+    border-color: #00f5d4;
+}
+
+/* Quantity Control */
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.qty-btn {
+    width: 50px;
+    height: 50px;
+    /* iOS minimum touch target */
+    min-width: 44px;
+    min-height: 44px;
+    border: 3px solid #36bfff;
+    background: linear-gradient(135deg, #0748fa, #e6e935);
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.qty-btn:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.qty-btn:last-child {
+    border-radius: 0 12px 12px 0;
+}
+
+.qty-btn:hover {
+    background: linear-gradient(135deg, #e8ff1d, #21b0e9);
+    border-color: #35d0ff;
+    transform: scale(1.1);
+    box-shadow: var(--glow);
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
+}
+
+.qty-control input {
+    text-align: center;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    -moz-appearance: textfield;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1100ff;
+}
+
+.qty-control input::-webkit-outer-spin-button,
+.qty-control input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Buttons */
+.btn-add {
+    width: 100%;
+    padding: 16px 28px;
+    /* iOS minimum touch target */
+    min-height: 52px;
+    background: linear-gradient(135deg, #025bff, #f0ff1b);
+    background-size: 200% 200%;
+    animation: gradientBG 3s ease infinite;
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(239, 255, 11, 0.856);
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-add:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(26, 209, 255, 0.815), var(--glow);
+}
+
+.btn-add:active {
+    transform: scale(0.98);
+}
+
+/* Quick Add */
+.quick-add .card h2::before {
+    content: '⚡';
+}
+
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.quick-btn {
+    padding: 16px 18px;
+    /* iOS minimum touch target */
+    min-height: 52px;
+    background: linear-gradient(135deg, #f8f9ff, #e8f4f8);
+    border: 2px solid #00f5d4;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    color: #4a4a6a;
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.quick-btn:hover {
+    background: linear-gradient(135deg, #00f5d4, #00bbf9);
+    color: #1a1a2e;
+    border-color: #caff0c;
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: var(--glow-cyan);
+}
+
+.quick-btn:active {
+    transform: scale(0.98);
+}
+
+/* Cart Section */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-header h2::before {
+    content: '🛒';
+}
+
+.item-count {
+    background: linear-gradient(135deg, #ff006e, #ff69b4);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+}
+
+/* Cart Table */
+.cart-table-container {
+    margin-bottom: 20px;
+    min-height: 200px;
+    background: linear-gradient(135deg, #fff5f5, #f8f9ff);
+    border-radius: 15px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th {
+    background: linear-gradient(135deg, #0c1be6, #dcff19);
+    padding: 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--white);
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+}
+
+.cart-table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.cart-table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.cart-table td {
+    padding: 14px;
+    border-bottom: 2px solid #e8e8ff;
+    font-size: 0.95rem;
+    color: #4a4a6a;
+}
+
+.cart-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.cart-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(0, 245, 212, 0.1), rgba(123, 44, 191, 0.1));
+    transform: scale(1.01);
+}
+
+.cart-table .btn-delete {
+    padding: 12px 18px;
+    /* iOS minimum touch target */
+    min-height: 44px;
+    min-width: 44px;
+    background: linear-gradient(135deg, #ff006e, #ff69b4);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(255, 0, 110, 0.3);
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cart-table .btn-delete:hover {
+    background: linear-gradient(135deg, #e6005c, #ff1493);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.5);
+}
+
+.cart-table .btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Empty Cart */
+.empty-cart {
+    text-align: center;
+    padding: 50px 20px;
+    color: #4a4a6a;
+}
+
+.empty-cart p:first-child {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.empty-cart .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+/* Cart Footer */
+.cart-footer {
+    border-top: 3px dashed #00f5d4;
+    padding-top: 24px;
+    /* iOS safe area for bottom */
+    padding-bottom: max(24px, var(--safe-area-bottom));
+}
+
+.total-section {
+    margin-bottom: 24px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.total-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a4a6a;
+}
+
+.grand-total {
+    border-top: 3px solid #ff6b35;
+    margin-top: 12px;
+    padding-top: 18px;
+}
+
+.grand-total .total-label {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a1a2e;
+    background: linear-gradient(90deg, #ff6b35, #7b2cbf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.grand-total .price {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ff6b35, #ff006e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulse 2s ease infinite;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 14px;
+}
+
+.btn-reset, .btn-checkout {
+    flex: 1;
+    padding: 18px 28px;
+    /* iOS minimum touch target */
+    min-height: 56px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #0c0cff, #e8ff19);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgb(20, 155, 233);
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #1900ff, #f2ff36);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 238, 255, 0.5);
+}
+
+.btn-reset:active {
+    transform: scale(0.98);
+}
+
+.btn-checkout {
+    background: linear-gradient(135deg, #2c06d6, #ddff1a);
+    color: #1a1a2e;
+    box-shadow: 0 4px 15px rgba(16, 179, 255, 0.822);
+}
+
+.btn-checkout:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(6, 214, 160, 0.6), var(--glow-cyan);
+}
+
+.btn-checkout:active {
+    transform: scale(0.98);
+}
+
+/* History Section */
+.history-section .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-reset-history {
+    padding: 10px 18px;
+    /* iOS minimum touch target */
+    min-height: 44px;
+    background: linear-gradient(135deg, #ff6b35, #ff006e);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(255, 0, 110, 0.3);
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-reset-history:hover {
+    background: linear-gradient(135deg, #e6005c, #ff1493);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.5);
+}
+
+.btn-reset-history:active {
+    transform: scale(0.98);
+}
+
+.history-table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th {
+    background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+    padding: 12px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--white);
+    position: sticky;
+    top: 0;
+}
+
+.history-table td {
+    padding: 12px;
+    border-bottom: 2px solid #e8e8ff;
+    font-size: 0.875rem;
+    color: #4a4a6a;
+}
+
+.history-table .btn-view {
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #00f5d4, #00bbf9);
+    color: #1a1a2e;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* iOS tap highlight removal */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.history-table .btn-view:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow-cyan);
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: max(20px, calc(20px + var(--safe-area-top)));
+    right: max(20px, calc(20px + var(--safe-area-right)));
+    left: max(20px, calc(20px + var(--safe-area-left)));
+    padding: 18px 28px;
+    border-radius: 14px;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    transform: translateX(400px);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #3903ff, #eaff2b);
+    border: 2px solid #07cdff;
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #0066ff, #fcff30);
+    border: 2px solid #0099ff;
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #0548ff, #e0ff55);
+    border: 2px solid #0ad3f7;
+}
+
+/* ===============================
+   ANDROID & iOS RESPONSIVE STYLES
+   =============================== */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .kasir-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Styles (iPhone & Android) */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+
+    .header-kasir {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        padding-top: max(20px, calc(20px + var(--safe-area-top)));
+    }
+
+    .header-left {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .back-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-kasir h1 {
+        font-size: 1.5rem;
+    }
+
+    .datetime-display {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .date-box, .time-box {
+        flex: 1;
+        min-width: 120px;
+        padding: 12px 16px;
+    }
+
+    .date-box .value, .time-box .value {
+        font-size: 1rem;
+    }
+
+    .kasir-layout {
+        gap: 16px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 1.15rem;
+    }
+
+    .form-group input {
+        min-height: 48px;
+        padding: 12px 14px;
+        font-size: 1rem;
+    }
+
+    .qty-control {
+        width: 100%;
+    }
+
+    .qty-btn {
+        width: 44px;
+        height: 48px;
+    }
+
+    .qty-control input {
+        flex: 1;
+        height: 48px;
+    }
+
+    .quick-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-btn {
+        padding: 14px 16px;
+    }
+
+    .btn-add {
+        min-height: 52px;
+        padding: 14px 20px;
+    }
+
+    /* Cart Table - Horizontal scroll on mobile */
+    .cart-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cart-table {
+        min-width: 500px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    .cart-footer {
+        position: sticky;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        margin: 0 -20px;
+        padding: 16px 20px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .total-row {
+        padding: 8px 0;
+    }
+
+    .grand-total .price {
+        font-size: 1.4rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-reset, .btn-checkout {
+        min-height: 52px;
+        padding: 14px 20px;
+    }
+
+    /* History section */
+    .history-table-container {
+        max-height: 250px;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 10px 6px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Small Mobile (iPhone SE & smaller) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .header-kasir {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .header-kasir h1 {
+        font-size: 1.25rem;
+    }
+
+    .date-box, .time-box {
+        min-width: 100px;
+        padding: 10px 12px;
+    }
+
+    .date-box .label, .time-box .label {
+        font-size: 0.7rem;
+    }
+
+    .date-box .value, .time-box .value {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 14px;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input {
+        min-height: 44px;
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .grand-total .total-label {
+        font-size: 1.2rem;
+    }
+
+    .grand-total .price {
+        font-size: 1.2rem;
+    }
+
+    .notification {
+        left: 10px;
+        right: 10px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* iPhone X and newer (notch handling) */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Android Chrome address bar handling */
+@supports (height: 100dvh) {
+    body {
+        min-height: 100dvh;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header-kasir {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-left {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .datetime-display {
+        width: auto;
+    }
+
+    .kasir-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cart-table-container {
+        max-height: 200px;
+    }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+    .qty-btn:hover {
+        transform: none;
+    }
+
+    .quick-btn:hover {
+        transform: none;
+    }
+
+    .btn-delete:hover {
+        transform: none;
+    }
+
+    .btn-reset:hover {
+        transform: none;
+    }
+
+    .btn-checkout:hover {
+        transform: none;
+    }
+}
+
+/* Additional Vibrant Effects */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+/* iOS-style overscroll behavior */
+body {
+    overscroll-behavior: contain;
+}
